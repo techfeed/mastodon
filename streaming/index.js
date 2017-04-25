@@ -138,6 +138,10 @@ if (cluster.isMaster) {
       next()
       return
     }
+    if (req.url === '/status'){
+      next()
+      return
+    }
 
     const authorization = req.get('Authorization')
 
@@ -271,6 +275,10 @@ if (cluster.isMaster) {
   app.use(allowCrossDomain)
   app.use(authenticationMiddleware)
   app.use(errorMiddleware)
+
+  app.get('/status', (req, res) => {
+    res.status(200).send('OK');
+  })
 
   app.get('/api/v1/streaming/user', (req, res) => {
     streamFrom(`timeline:${req.accountId}`, req, streamToHttp(req, res), streamHttpEnd(req))

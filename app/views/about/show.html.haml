@@ -17,13 +17,15 @@
 
 .wrapper
   %h1
-    = image_tag 'logo.png'
+    = image_tag '//res.cloudinary.com/techfeed/image/upload/c_scale,w_46/v1492589867/techfeedon-icon2.png'
     = Setting.site_title
 
-  %p= t('about.about_mastodon').html_safe
+  - unless @instance_presenter.site_description.blank?
+    %h3= t('about.description_headline', domain: site_hostname)
+    %p= @instance_presenter.site_description.html_safe
 
   .screenshot-with-signup
-    .mascot= image_tag 'fluffy-elephant-friend.png'
+    .mascot= image_tag '//res.cloudinary.com/techfeed/image/upload/c_scale,w_270/v1492590194/techfeedon-logo2-V.png'
 
     - if @instance_presenter.open_registrations
       = render 'registration'
@@ -39,6 +41,8 @@
           = link_to t('about.other_instances'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/List-of-Mastodon-instances.md'
           ·
           = link_to t('about.about_this'), about_more_path
+
+  %p= t('about.about_mastodon').html_safe
 
   %h3= t('about.features_headline')
 
@@ -71,10 +75,6 @@
         %li
           = fa_icon('li check-square')
           = t 'about.features.api'
-
-  - unless @instance_presenter.site_description.blank?
-    %h3= t('about.description_headline', domain: site_hostname)
-    %p= @instance_presenter.site_description.html_safe
 
   .actions
     .info
