@@ -167,6 +167,8 @@ ja:
         title: サイトの詳細な説明
       site_title: サイトのタイトル
       title: サイト設定
+    apps:
+      title: OAuth Apps
     title: 管理
   application_mailer:
     settings: 'メール設定の変更: %{link}'

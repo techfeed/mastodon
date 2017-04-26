@@ -24,6 +24,7 @@ SimpleNavigation::Configuration.run do |navigation|
       admin.item :sidekiq, safe_join([fa_icon('diamond fw'), 'Sidekiq']), sidekiq_url, link_html: { target: 'sidekiq' }
       admin.item :pghero, safe_join([fa_icon('database fw'), 'PgHero']), pghero_url, link_html: { target: 'pghero' }
       admin.item :settings, safe_join([fa_icon('cogs fw'), t('admin.settings.title')]), admin_settings_url
+      admin.item :apps, safe_join([fa_icon('plug fw'), t('admin.apps.title')]), '/oauth/applications'
     end
 
     primary.item :logout, safe_join([fa_icon('sign-out fw'), t('auth.logout')]), destroy_user_session_url, link_html: { 'data-method' => 'delete' }

@@ -179,6 +179,8 @@ en:
         title: Extended site description
       site_title: Site title
       title: Site Settings
+    apps:
+      title: OAuth Apps
     title: Administration
   application_mailer:
     settings: 'Change e-mail preferences: %{link}'
