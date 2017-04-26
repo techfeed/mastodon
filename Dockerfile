@@ -3,8 +3,11 @@ FROM ruby:2.4.1-alpine
 LABEL maintainer="https://github.com/tootsuite/mastodon" \
       description="A GNU Social-compatible microblogging server"
 
-ENV RAILS_ENV=production \
-    NODE_ENV=production
+ARG RAILS_ENV_ARG="production"
+ARG NODE_ENV_ARG="production"
+
+ENV RAILS_ENV=$RAILS_ENV_ARG \
+    NODE_ENV=$NODE_ENV_ARG
 
 EXPOSE 3000 4000
 
@@ -31,7 +34,7 @@ RUN echo "@edge https://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposit
     imagemagick@edge \
     ca-certificates \
  && npm install -g npm@3 && npm install -g yarn \
- && bundle install --deployment --without test development \
+ && bundle install --deployment --without test --with development \
  && yarn --ignore-optional \
  && yarn cache clean \
  && npm -g cache clean \

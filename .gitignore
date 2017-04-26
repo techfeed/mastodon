@@ -20,6 +20,7 @@ coverage
 public/system
 public/assets
 .env
+.env.development
 .env.production
 node_modules/
 neo4j/
